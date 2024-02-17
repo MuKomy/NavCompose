@@ -24,8 +24,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun FirstPage(){
-    //val navController = rememberNavController()
+fun FirstPage(onNavigateToSecondScreen :() -> Unit){
+    val navController = rememberNavController()
     var name by remember { mutableStateOf("") }
     Column(modifier = Modifier
         .fillMaxSize(),
@@ -33,7 +33,7 @@ fun FirstPage(){
         Text("First Page", fontWeight = FontWeight.Bold, fontSize = 20.sp)
         TextField(value = name, onValueChange = {name = it})
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {NavController.navigate(Routes.SecondScreen.route) }) {
+        Button(onClick = {onNavigateToSecondScreen() }) {
             Text(text = "Go to Second Page")
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -43,3 +43,4 @@ fun FirstPage(){
         }
     }
 }
+

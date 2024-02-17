@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SecondPage(name :String) {
+fun SecondPage(onNavigateToFirstScreen:() ->Unit ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -24,9 +24,9 @@ fun SecondPage(name :String) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text("Second Page", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-        Text(text = "Welcome,$name")
+        Text(text = "Welcome")
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = { onNavigateToFirstScreen() }) {
             Text(text = "Go to First Page")
         }
         Spacer(modifier = Modifier.height(16.dp))
