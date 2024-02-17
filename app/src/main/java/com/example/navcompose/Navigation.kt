@@ -10,13 +10,23 @@ fun Navigation(){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Routes.FirstScreen.route){
         composable(Routes.FirstScreen.route){
-            FirstPage {  navController.navigate("second_screen") }
+            FirstPage (
+                { navController.navigate(Routes.SecondScreen.route) },
+                { navController.navigate(Routes.ThirdScreen.route) }
+            )
         }
         composable(Routes.SecondScreen.route){
-            SecondPage{  navController.navigate("first_screen") }
+            SecondPage(
+                { navController.navigate("first_screen")},
+            {navController.navigate("third_screen")
+            }
+            )
         }
         composable(Routes.ThirdScreen.route){
-            ThirdPage(name = "name")
+            ThirdPage(
+                { navController.navigate("first_screen")},
+                {navController.navigate("second_screen")}
+            )
         }
     }
 

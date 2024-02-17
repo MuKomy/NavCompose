@@ -16,20 +16,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun ThirdPage(name :String){
+fun ThirdPage(
+    onNavigateToFirstScreen:() ->Unit,
+    onNavigateToSecondScreen:() ->Unit
+){
     Column(modifier = Modifier
         .fillMaxSize()
         .background(color = Color.Gray),
         horizontalAlignment = Alignment.CenterHorizontally) {
         Text("Third Page", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-        Text(text = "Welcome,$name")
+        Text(text = "Welcome")
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = { onNavigateToFirstScreen() }) {
             Text(text = "Go to First Page")
         }
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = { onNavigateToSecondScreen() }) {
             Text(text = "Go to Second Page")
         }
     }

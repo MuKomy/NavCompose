@@ -24,7 +24,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun FirstPage(onNavigateToSecondScreen :() -> Unit){
+fun FirstPage(
+    onNavigateToSecondScreen :() -> Unit,
+    onNavigateToThirdScreen :() -> Unit
+              ){
     val navController = rememberNavController()
     var name by remember { mutableStateOf("") }
     Column(modifier = Modifier
@@ -38,7 +41,7 @@ fun FirstPage(onNavigateToSecondScreen :() -> Unit){
         }
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = { onNavigateToThirdScreen() }) {
             Text(text = "Go to Third Page")
         }
     }

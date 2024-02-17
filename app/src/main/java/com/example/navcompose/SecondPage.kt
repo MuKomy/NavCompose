@@ -16,7 +16,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SecondPage(onNavigateToFirstScreen:() ->Unit ) {
+fun SecondPage(
+    onNavigateToFirstScreen:() ->Unit,
+    onNavigateToThirdScreen:() ->Unit
+    ) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -31,7 +34,7 @@ fun SecondPage(onNavigateToFirstScreen:() ->Unit ) {
         }
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = { onNavigateToThirdScreen() }) {
             Text(text = "Go to Third Page")
         }
     }
