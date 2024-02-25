@@ -14,11 +14,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
 fun ThirdPage(
-    onNavigateToFirstScreen:() ->Unit,
-    onNavigateToSecondScreen:() ->Unit
+    navController: NavController,
+    name :String?
 ){
     Column(modifier = Modifier
         .fillMaxSize()
@@ -27,12 +28,12 @@ fun ThirdPage(
         Text("Third Page", fontWeight = FontWeight.Bold, fontSize = 20.sp)
         Text(text = "Welcome")
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { onNavigateToFirstScreen() }) {
+        Button(onClick = { navController.navigate(Routes.FirstScreen.route) }) {
             Text(text = "Go to First Page")
         }
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = { onNavigateToSecondScreen() }) {
+        Button(onClick = { navController.navigate(Routes.SecondScreen.route) }) {
             Text(text = "Go to Second Page")
         }
     }
